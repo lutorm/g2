@@ -70,7 +70,7 @@ sleep 0.5
 # stty -f "${port}" 115200
 
 echo "Starting programming of file ${file} -> ${file/.elf/.bin} on port ${port/\/dev\//}"
-$arduinoAppDir/Arduino.app/Contents/Resources/Java/hardware/tools/bossac -e -w -v -b "${file/.elf/.bin}"
+bossac -e -w -v -b "${file/.elf/.bin}"
 
 echo
 echo "WARNING: You may need to hit the RESET button on the device at this point."

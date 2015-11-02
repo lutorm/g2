@@ -73,10 +73,11 @@ USER_INCLUDE_DIRS += $(SOURCE_DIRS)
 #	SETTINGS_FILE="settings_default.h"
 #	SETTINGS_FILE="settings_othermill.h"
 #	SETTINGS_FILE="settings_probotixV90.h"
-	SETTINGS_FILE="settings_shapeoko2.h"
+#	SETTINGS_FILE="settings_shapeoko2.h"
 #	SETTINGS_FILE="settings_shopbot_sbv300.h"
 #	SETTINGS_FILE="settings_shopbot_test.h"
 #	SETTINGS_FILE="settings_Ultimaker.h"
+	SETTINGS_FILE="settings_minimill.h"
 
 # ---------------------------------------------------------------------------------------
 # C Flags (NOT CPP Flags)
@@ -174,11 +175,21 @@ DEPDIR = $(OBJ)/dep
 # Start of platforms section
 #
 
-PLATFORM ?= gShield
+PLATFORM ?= minimill
 
 ifeq ("$(PLATFORM)","gShield")
 
 	# This is a due with a Synthetos gShield. We'll use the Due platform, but set defines
+	# for the code to get the pinout right.
+
+	BASE_PLATFORM=due
+	DEVICE_DEFINES += MOTATE_BOARD="gShield" SETTINGS_FILE=${SETTINGS_FILE}
+
+endif
+
+ifeq ("$(PLATFORM)","minimill")
+
+	# This is a due running a mini muill
 	# for the code to get the pinout right.
 
 	BASE_PLATFORM=due
