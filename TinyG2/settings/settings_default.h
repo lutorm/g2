@@ -425,20 +425,6 @@
 #define TT6_B_OFFSET 0
 #define TT6_C_OFFSET 0
 
-#define TT7_X_OFFSET 0
-#define TT7_Y_OFFSET 0
-#define TT7_Z_OFFSET 0
-#define TT7_A_OFFSET 0
-#define TT7_B_OFFSET 0
-#define TT7_C_OFFSET 0
-
-#define TT8_X_OFFSET 0
-#define TT8_Y_OFFSET 0
-#define TT8_Z_OFFSET 0
-#define TT8_A_OFFSET 0
-#define TT8_B_OFFSET 0
-#define TT8_C_OFFSET 0
-
 /*** User-Defined Data Defaults ***/
 
 #define USER_DATA_A0 0

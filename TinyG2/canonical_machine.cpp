@@ -897,7 +897,6 @@ stat_t cm_set_coord_offsets(const uint8_t coord_system,
 		return (STAT_L_WORD_IS_MISSING);
     }
 
-    float** offset_to_set;
     if ((L_word == 2) || (L_word == 20)) {
         // coordinate system offset command
         if ((coord_system < G54) || (coord_system > COORD_SYSTEM_MAX)) {
@@ -905,7 +904,19 @@ stat_t cm_set_coord_offsets(const uint8_t coord_system,
             return (STAT_P_WORD_IS_INVALID);
         }
 
-        offset_to_set = (float**)cm.offset;
+        for (uint8_t axis = AXIS_X; axis < AXES; axis++) {
+            if (flag[axis]) {
+                if (L_word == 2) {
+                    cm.offset[coord_system][axis] = _to_millimeters(offset[axis]);
+                } else {
+                    /* TODO we need to take into account both offsets here. */
+                    cm.offset[coord_system][axis] = cm.gmx.position[axis] - _to_millimeters(offset[axis]);
+                }
+
+                // persist offsets once machining cycle is over
+                cm.deferred_write_flag = true;
+            }
+        }
     }
     else if ((L_word == 1) && (L_word != 10)) {
         // tool table offset command
@@ -913,24 +924,22 @@ stat_t cm_set_coord_offsets(const uint8_t coord_system,
             return (STAT_P_WORD_IS_INVALID);
         }
 
-        offset_to_set = (float**)cm.tt_offset;
+        for (uint8_t axis = AXIS_X; axis < AXES; axis++) {
+            if (flag[axis]) {
+                if (L_word == 1) {
+                    cm.tt_offset[coord_system][axis] = _to_millimeters(offset[axis]);
+                } else {
+                    /* TODO we need to take into account both offsets here. */
+                    cm.tt_offset[coord_system][axis] = cm.gmx.position[axis] - _to_millimeters(offset[axis]);
+                }
+
+                // persist offsets once machining cycle is over
+                cm.deferred_write_flag = true;
+            }
+        }
     }
     else {
         return (STAT_L_WORD_IS_INVALID);
-    }
-
-    for (uint8_t axis = AXIS_X; axis < AXES; axis++) {
-        if (flag[axis]) {
-            if ((L_word == 1) || (L_word == 2)) {
-                offset_to_set[coord_system][axis] = _to_millimeters(offset[axis]);
-            } else {
-                /* TODO we need to take into account both offsets here. */
-                offset_to_set[coord_system][axis] = cm.gmx.position[axis] - _to_millimeters(offset[axis]);
-            }
-
-            // persist offsets once machining cycle is over
-            cm.deferred_write_flag = true;
-        }
     }
     return (STAT_OK);
 }
@@ -958,7 +967,10 @@ stat_t cm_set_tl_offset(const uint8_t H_word, bool apply_additional)
             // interpret H0 as "current tool", just like no H at all.
             tool = cm.gm.tool;
         }
-        tool = cm.gn.H_word;
+        else
+        {
+            tool = cm.gn.H_word;
+        }
     }
     else
     {

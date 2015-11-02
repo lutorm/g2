@@ -454,6 +454,14 @@ const cfgItem_t cfgArray[] PROGMEM = {
 	{ "g59","g59b",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.offset[G59][AXIS_B], G59_B_OFFSET },
 	{ "g59","g59c",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.offset[G59][AXIS_C], G59_C_OFFSET },
 
+	// Default values for current tool length offsets (not configurable, set to zero)
+	{ "tl","tlx",_fipc, 3, cm_print_cofs, get_flt, set_flu,(float *)&cm.tl_offset[AXIS_X], 0 },
+	{ "tl","tly",_fipc, 3, cm_print_cofs, get_flt, set_flu,(float *)&cm.tl_offset[AXIS_Y], 0 },
+	{ "tl","tlz",_fipc, 3, cm_print_cofs, get_flt, set_flu,(float *)&cm.tl_offset[AXIS_Z], 0 },
+	{ "tl","tla",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.tl_offset[AXIS_A], 0 },
+	{ "tl","tlb",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.tl_offset[AXIS_B], 0 },
+	{ "tl","tlc",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.tl_offset[AXIS_C], 0 },
+
 	// Tool table offsets
 	{ "tt1","tt1x",_fipc, 3, cm_print_cofs, get_flt, set_flu,(float *)&cm.tt_offset[1][AXIS_X], TT1_X_OFFSET },
 	{ "tt1","tt1y",_fipc, 3, cm_print_cofs, get_flt, set_flu,(float *)&cm.tt_offset[1][AXIS_Y], TT1_Y_OFFSET },
@@ -496,20 +504,6 @@ const cfgItem_t cfgArray[] PROGMEM = {
 	{ "tt6","tt6a",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.tt_offset[6][AXIS_A], TT6_A_OFFSET },
 	{ "tt6","tt6b",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.tt_offset[6][AXIS_B], TT6_B_OFFSET },
 	{ "tt6","tt6c",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.tt_offset[6][AXIS_C], TT6_C_OFFSET },
-
-	{ "tt7","tt7x",_fipc, 3, cm_print_cofs, get_flt, set_flu,(float *)&cm.tt_offset[7][AXIS_X], TT7_X_OFFSET },
-	{ "tt7","tt7y",_fipc, 3, cm_print_cofs, get_flt, set_flu,(float *)&cm.tt_offset[7][AXIS_Y], TT7_Y_OFFSET },
-	{ "tt7","tt7z",_fipc, 3, cm_print_cofs, get_flt, set_flu,(float *)&cm.tt_offset[7][AXIS_Z], TT7_Z_OFFSET },
-	{ "tt7","tt7a",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.tt_offset[7][AXIS_A], TT7_A_OFFSET },
-	{ "tt7","tt7b",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.tt_offset[7][AXIS_B], TT7_B_OFFSET },
-	{ "tt7","tt7c",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.tt_offset[7][AXIS_C], TT7_C_OFFSET },
-
-	{ "tt8","tt8x",_fipc, 3, cm_print_cofs, get_flt, set_flu,(float *)&cm.tt_offset[8][AXIS_X], TT8_X_OFFSET },
-	{ "tt8","tt8y",_fipc, 3, cm_print_cofs, get_flt, set_flu,(float *)&cm.tt_offset[8][AXIS_Y], TT8_Y_OFFSET },
-	{ "tt8","tt8z",_fipc, 3, cm_print_cofs, get_flt, set_flu,(float *)&cm.tt_offset[8][AXIS_Z], TT8_Z_OFFSET },
-	{ "tt8","tt8a",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.tt_offset[8][AXIS_A], TT8_A_OFFSET },
-	{ "tt8","tt8b",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.tt_offset[8][AXIS_B], TT8_B_OFFSET },
-	{ "tt8","tt8c",_fip,  3, cm_print_cofs, get_flt, set_flt,(float *)&cm.tt_offset[8][AXIS_C], TT8_C_OFFSET },
 
 	{ "g92","g92x",_fic, 3, cm_print_cofs, get_flt, set_nul,(float *)&cm.gmx.origin_offset[AXIS_X], 0 },// G92 handled differently
 	{ "g92","g92y",_fic, 3, cm_print_cofs, get_flt, set_nul,(float *)&cm.gmx.origin_offset[AXIS_Y], 0 },
@@ -803,14 +797,13 @@ const cfgItem_t cfgArray[] PROGMEM = {
 	{ "","g57",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },
 	{ "","g58",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },
 	{ "","g59",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },
+	{ "","tl",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },	// tl offsets
 	{ "","tt1",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },	// tt offsets
 	{ "","tt2",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },	// tt offsets
 	{ "","tt3",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },	// tt offsets
 	{ "","tt4",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },	// tt offsets
 	{ "","tt5",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },	// tt offsets
 	{ "","tt6",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },	// tt offsets
-	{ "","tt7",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },	// tt offsets
-	{ "","tt8",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },	// tt offsets
 	{ "","g92",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },	// origin offsets
 	{ "","g28",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },	// g28 home position
 	{ "","g30",_f0, 0, tx_print_nul, get_grp, set_grp,(float *)&cs.null,0 },	// g30 home position
@@ -853,7 +846,7 @@ const cfgItem_t cfgArray[] PROGMEM = {
 /***** Make sure these defines line up with any changes in the above table *****/
 
 #define NV_COUNT_UBER_GROUPS 	5 		// count of uber-groups, above
-#define STANDARD_GROUPS 		47		// count of standard groups, excluding diagnostic and user data groups
+#define STANDARD_GROUPS 		45		// count of standard groups, excluding diagnostic and user data groups
 
 #if (MOTORS >= 5)
 #define MOTOR_GROUP_5			1
@@ -1002,7 +995,7 @@ static stat_t _do_axes(nvObj_t *nv)	// print parameters for all axis groups
 
 static stat_t _do_offsets(nvObj_t *nv)	// print offset parameters for G54-G59,G92, G28, G30
 {
-	char list[][TOKEN_LEN+1] = {"g54","g55","g56","g57","g58","g59","g92","g28","g30",""}; // must have a terminating element
+    char list[][TOKEN_LEN+1] = {"g54","g55","g56","g57","g58","g59","g92","g28","g30","tl","tt1","tt2","tt3","tt4","tt5","tt6",""}; // must have a terminating element
 	return (_do_group_list(nv, list));
 }
 

@@ -492,11 +492,11 @@ static stat_t _execute_gcode_block()
 	//--> cutter radius compensation goes here
 	switch (cm.gn.next_action) {
         case NEXT_ACTION_SET_TL_OFFSET: { 			// G43
-            ritorno(cm_set_tl_offset(cm.gn.H_word, false)); }
+            ritorno(cm_set_tl_offset(cm.gn.H_word, false)); break; }
 	case NEXT_ACTION_SET_ADDITIONAL_TL_OFFSET: { // G43.2
-            ritorno(cm_set_tl_offset(cm.gn.H_word, true)); }
+            ritorno(cm_set_tl_offset(cm.gn.H_word, true)); break; }
         case NEXT_ACTION_CANCEL_TL_OFFSET: { // G49
-            ritorno(cm_cancel_tl_offset()); }
+            ritorno(cm_cancel_tl_offset()); break; }
 	}
 	EXEC_FUNC(cm_set_coord_system, coord_system);           // G54, G55, G56, G57, G58, G59
 	EXEC_FUNC(cm_set_path_control, path_control);           // G61, G61.1, G64
