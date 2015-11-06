@@ -909,8 +909,11 @@ stat_t cm_set_coord_offsets(const uint8_t coord_system,
                 if (L_word == 2) {
                     cm.offset[coord_system][axis] = _to_millimeters(offset[axis]);
                 } else {
-                    /* TODO we need to take into account both offsets here. */
-                    cm.offset[coord_system][axis] = cm.gmx.position[axis] - _to_millimeters(offset[axis]);
+                    // Should L20 take into account G92 offsets?
+                    cm.offset[coord_system][axis] = 
+                        cm.gmx.position[axis]
+                        - _to_millimeters(offset[axis])
+                        - cm.tl_offset[axis];
                 }
 
                 // persist offsets once machining cycle is over
@@ -919,7 +922,7 @@ stat_t cm_set_coord_offsets(const uint8_t coord_system,
         }
     }
     else if ((L_word == 1) && (L_word != 10)) {
-        // tool table offset command
+        // tool table offset command. L11 not supported atm.
         if ((coord_system < 1) || (coord_system > TOOLS)) {
             return (STAT_P_WORD_IS_INVALID);
         }
@@ -929,8 +932,12 @@ stat_t cm_set_coord_offsets(const uint8_t coord_system,
                 if (L_word == 1) {
                     cm.tt_offset[coord_system][axis] = _to_millimeters(offset[axis]);
                 } else {
-                    /* TODO we need to take into account both offsets here. */
-                    cm.tt_offset[coord_system][axis] = cm.gmx.position[axis] - _to_millimeters(offset[axis]);
+                    // L10 should also take into account G92 offset
+                    cm.tt_offset[coord_system][axis] = 
+                        cm.gmx.position[axis]
+                        - _to_millimeters(offset[axis])
+                        - cm.offset[cm.gm.coord_system][axis]
+                        -(cm.gmx.origin_offset[axis] * cm.gmx.origin_offset_enable);
                 }
 
                 // persist offsets once machining cycle is over
