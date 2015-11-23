@@ -921,7 +921,7 @@ stat_t cm_set_coord_offsets(const uint8_t coord_system,
             }
         }
     }
-    else if ((L_word == 1) && (L_word != 10)) {
+    else if ((L_word == 1) || (L_word == 10)) {
         // tool table offset command. L11 not supported atm.
         if ((coord_system < 1) || (coord_system > TOOLS)) {
             return (STAT_P_WORD_IS_INVALID);
