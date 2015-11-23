@@ -102,6 +102,7 @@
 #define M1_TRAVEL_PER_REV           5.08                    // 1tr
 #define M1_MICROSTEPS               10                       // 1mi  1,2,4,8,16,32
 #define M1_POLARITY                 0                       // 1po  0=normal, 1=reversed
+#define M1_ENABLE_POLARITY          1
 #define M1_POWER_MODE               MOTOR_POWER_MODE        // 1pm
 #define M1_POWER_LEVEL              MOTOR_POWER_LEVEL       // 1pl
 
@@ -110,6 +111,7 @@
 #define M2_TRAVEL_PER_REV           5.08
 #define M2_MICROSTEPS               10
 #define M2_POLARITY                 0
+#define M2_ENABLE_POLARITY          1
 #define M2_POWER_MODE               MOTOR_POWER_MODE
 #define M2_POWER_LEVEL              MOTOR_POWER_LEVEL
 
@@ -118,6 +120,7 @@
 #define M3_TRAVEL_PER_REV           5.08
 #define M3_MICROSTEPS               10
 #define M3_POLARITY                 1
+#define M3_ENABLE_POLARITY          1
 #define M3_POWER_MODE               MOTOR_POWER_MODE
 #define M3_POWER_LEVEL              MOTOR_POWER_LEVEL
 
@@ -126,6 +129,7 @@
 #define M4_TRAVEL_PER_REV           360 				// 1tr		degrees moved per motor rev
 #define M4_MICROSTEPS               8					// 1mi
 #define M4_POLARITY                 0					// 1po
+#define M4_ENABLE_POLARITY          1
 #define M4_POWER_MODE               MOTOR_POWER_MODE	// 1pm
 #define M4_POWER_LEVEL              MOTOR_POWER_LEVEL	// 1mp
 
@@ -134,6 +138,7 @@
 #define M5_TRAVEL_PER_REV           360                 // degrees moved per motor rev
 #define M5_MICROSTEPS               8
 #define M5_POLARITY                 0
+#define M5_ENABLE_POLARITY          1
 #define M5_POWER_MODE               MOTOR_POWER_MODE
 #define M5_POWER_LEVEL              MOTOR_POWER_LEVEL
 
@@ -142,6 +147,7 @@
 #define M6_TRAVEL_PER_REV           360                 // degrees moved per motor rev
 #define M6_MICROSTEPS               8
 #define M6_POLARITY                 0
+#define M6_ENABLE_POLARITY          1
 #define M6_POWER_MODE               MOTOR_POWER_MODE
 #define M6_POWER_LEVEL              MOTOR_POWER_LEVEL
 

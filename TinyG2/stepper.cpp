@@ -124,7 +124,8 @@ struct Stepper {
 	{
         if (!_enable.isNull()) {
             if (st_cfg.mot[motor].power_mode != MOTOR_DISABLED) {
-                _enable.clear();
+                st_cfg.mot[motor].enable_polarity ?
+                    _enable.set() : _enable.clear();
                 st_run.mot[motor].power_state = MOTOR_POWER_TIMEOUT_START;
                 common_enable.clear();  // if we have a common enable, this is the time to use it...
             }
@@ -134,7 +135,8 @@ struct Stepper {
     void disable()
     {
         if (!_enable.isNull()) {
-            _enable.set();
+            st_cfg.mot[motor].enable_polarity ?
+                _enable.clear() : _enable.set();
             st_run.mot[motor].power_state = MOTOR_IDLE;
         }
     };
@@ -1319,6 +1321,7 @@ static const char fmt_0ma[] PROGMEM = "[%s%s] m%s map to axis%15d [0=X,1=Y,2=Z..
 static const char fmt_0sa[] PROGMEM = "[%s%s] m%s step angle%20.3f%s\n";
 static const char fmt_0tr[] PROGMEM = "[%s%s] m%s travel per revolution%10.4f%s\n";
 static const char fmt_0po[] PROGMEM = "[%s%s] m%s polarity%18d [0=normal,1=reverse]\n";
+static const char fmt_0ep[] PROGMEM = "[%s%s] m%s enable polarity%18d [0=enable_low,1=enable_high]\n";
 static const char fmt_0pm[] PROGMEM = "[%s%s] m%s power management%10d [0=disabled,1=always on,2=in cycle,3=when moving]\n";
 static const char fmt_0pl[] PROGMEM = "[%s%s] m%s motor power level%13.3f [0.000=minimum, 1.000=maximum]\n";
 #ifdef __AVR
@@ -1351,6 +1354,7 @@ void st_print_sa(nvObj_t *nv) { _print_motor_flt_units(nv, fmt_0sa, DEGREE_INDEX
 void st_print_tr(nvObj_t *nv) { _print_motor_flt_units(nv, fmt_0tr, cm_get_units_mode(MODEL));}
 void st_print_mi(nvObj_t *nv) { _print_motor_int(nv, fmt_0mi);}
 void st_print_po(nvObj_t *nv) { _print_motor_int(nv, fmt_0po);}
+void st_print_ep(nvObj_t *nv) { _print_motor_int(nv, fmt_0ep);}
 void st_print_pm(nvObj_t *nv) { _print_motor_int(nv, fmt_0pm);}
 void st_print_pl(nvObj_t *nv) { _print_motor_flt(nv, fmt_0pl);}
 

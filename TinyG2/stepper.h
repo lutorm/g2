@@ -357,6 +357,7 @@ typedef struct cfgMotor {               // per-motor configs
     uint8_t	motor_map;                  // map motor to axis
     uint8_t microsteps;                 // microsteps to apply for each axis (ex: 8)
     uint8_t polarity;                   // 0=normal polarity, 1=reverse motor direction
+    uint8_t enable_polarity;            // 0=enable_low, 1=enable_high
     stPowerMode power_mode;             // See stPowerMode for values
     float power_level;                  // set 0.000 to 1.000 for PMW vref setting
     float step_angle;                   // degrees per whole step (ex: 1.8)
@@ -467,6 +468,7 @@ stat_t st_set_me(nvObj_t *nv);
 	void st_print_tr(nvObj_t *nv);
 	void st_print_mi(nvObj_t *nv);
 	void st_print_po(nvObj_t *nv);
+	void st_print_ep(nvObj_t *nv);
 	void st_print_pm(nvObj_t *nv);
 	void st_print_pl(nvObj_t *nv);
 	void st_print_mt(nvObj_t *nv);
@@ -480,6 +482,7 @@ stat_t st_set_me(nvObj_t *nv);
 	#define st_print_tr tx_print_stub
 	#define st_print_mi tx_print_stub
 	#define st_print_po tx_print_stub
+	#define st_print_ep tx_print_stub
 	#define st_print_pm tx_print_stub
 	#define st_print_pl tx_print_stub
 	#define st_print_mt tx_print_stub
