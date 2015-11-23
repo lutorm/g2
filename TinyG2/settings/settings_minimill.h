@@ -101,7 +101,7 @@
 #define M1_STEP_ANGLE               1.8                     // 1sa
 #define M1_TRAVEL_PER_REV           5.08                    // 1tr
 #define M1_MICROSTEPS               10                       // 1mi  1,2,4,8,16,32
-#define M1_POLARITY                 1                       // 1po  0=normal, 1=reversed
+#define M1_POLARITY                 1                        // 1po  0=normal, 1=reversed
 #define M1_ENABLE_POLARITY          1
 #define M1_POWER_MODE               MOTOR_POWER_MODE        // 1pm
 #define M1_POWER_LEVEL              MOTOR_POWER_LEVEL       // 1pl
@@ -119,7 +119,7 @@
 #define M3_STEP_ANGLE               1.8
 #define M3_TRAVEL_PER_REV           5.08
 #define M3_MICROSTEPS               10
-#define M3_POLARITY                 1
+#define M3_POLARITY                 0
 #define M3_ENABLE_POLARITY          1
 #define M3_POWER_MODE               MOTOR_POWER_MODE
 #define M3_POWER_LEVEL              MOTOR_POWER_LEVEL
