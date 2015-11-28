@@ -55,8 +55,8 @@
 #define SPINDLE_PAUSE_ON_HOLD       true
 #define SPINDLE_DWELL_TIME          1.0
 
-#define COOLANT_MIST_POLARITY       1                       // 0=active low, 1=active high
-#define COOLANT_FLOOD_POLARITY      1                       // 0=active low, 1=active high
+#define COOLANT_MIST_POLARITY       0                       // 0=active low, 1=active high
+#define COOLANT_FLOOD_POLARITY      0                       // 0=active low, 1=active high
 #define COOLANT_PAUSE_ON_HOLD       true
 
 #define MANUAL_FEEDRATE_OVERRIDE_ENABLE     false

@@ -193,7 +193,7 @@ ifeq ("$(PLATFORM)","minimill")
 	# for the code to get the pinout right.
 
 	BASE_PLATFORM=due
-	DEVICE_DEFINES += MOTATE_BOARD="gShield" SETTINGS_FILE=${SETTINGS_FILE}
+	DEVICE_DEFINES += MOTATE_BOARD="g251x" SETTINGS_FILE=${SETTINGS_FILE}
 
 endif
 
