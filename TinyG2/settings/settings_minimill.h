@@ -48,7 +48,7 @@
 
 #define SOFT_LIMIT_ENABLE           0						// 0=off, 1=on
 #define HARD_LIMIT_ENABLE           1						// 0=off, 1=on
-#define SAFETY_INTERLOCK_ENABLE     1						// 0=off, 1=on
+#define SAFETY_INTERLOCK_ENABLE     0						// 0=off, 1=on
 
 #define SPINDLE_ENABLE_POLARITY     1                       // 0=active low, 1=active high
 #define SPINDLE_DIR_POLARITY        0                       // 0=clockwise is low, 1=clockwise is high
@@ -94,7 +94,7 @@
 // *** motor settings ************************************************************************************
 
 #define MOTOR_POWER_MODE            MOTOR_POWERED_IN_CYCLE  // default motor power mode (see cmMotorPowerMode in stepper.h)
-#define MOTOR_POWER_TIMEOUT         10.00                    // motor power timeout in seconds
+#define MOTOR_POWER_TIMEOUT         5.00                    // motor power timeout in seconds
 #define MOTOR_POWER_LEVEL           0.375                   // default motor power level 0.00 - 1.00 (ARM only)
 
 #define M1_MOTOR_MAP                AXIS_X                  // 1ma
@@ -153,7 +153,7 @@
 
 // *** axis settings ***
 
-#define JERK_MAX                    350                  // that's "20,000,000" mm/(min^3)
+#define JERK_MAX                    2000                  // that's "20,000,000" mm/(min^3)
 #define JUNCTION_DEVIATION_XY       0.1                 // larger is faster
 #define JUNCTION_DEVIATION_Z        0.1                 // larger is faster
 #define JUNCTION_DEVIATION_ABC      0.1                 // larger is faster
@@ -177,12 +177,12 @@
 #define Y_VELOCITY_MAX              20000
 #define Y_FEEDRATE_MAX              Y_VELOCITY_MAX
 #define Y_TRAVEL_MIN                0
-#define Y_TRAVEL_MAX                150
+#define Y_TRAVEL_MAX                140
 #define Y_JERK_MAX                  JERK_MAX
 #define Y_JERK_HIGH_SPEED           Y_JERK_MAX
 #define Y_JUNCTION_DEVIATION        JUNCTION_DEVIATION_XY
-#define Y_HOMING_INPUT              3
-#define Y_HOMING_DIR                0
+#define Y_HOMING_INPUT              4
+#define Y_HOMING_DIR                1
 #define Y_SEARCH_VELOCITY           500
 #define Y_LATCH_VELOCITY            100
 #define Y_LATCH_BACKOFF             5
@@ -196,8 +196,8 @@
 #define Z_JERK_MAX                  250
 #define Z_JERK_HIGH_SPEED           Z_JERK_MAX
 #define Z_JUNCTION_DEVIATION        JUNCTION_DEVIATION_Z
-#define Z_HOMING_INPUT              5
-#define Z_HOMING_DIR                0
+#define Z_HOMING_INPUT              6
+#define Z_HOMING_DIR                1
 #define Z_SEARCH_VELOCITY           400
 #define Z_LATCH_VELOCITY            100
 #define Z_LATCH_BACKOFF             5
@@ -294,12 +294,12 @@
 #define DI1_FUNCTION                INPUT_FUNCTION_NONE
 
 // Xmax
-#define DI2_MODE                    NORMALLY_CLOSED
+#define DI2_MODE                    INPUT_MODE_DISABLED
 #define DI2_ACTION                  INPUT_ACTION_NONE
 #define DI2_FUNCTION                INPUT_FUNCTION_NONE
 
 // Ymin
-#define DI3_MODE                    NORMALLY_CLOSED
+#define DI3_MODE                    INPUT_MODE_DISABLED
 #define DI3_ACTION                  INPUT_ACTION_NONE
 #define DI3_FUNCTION                INPUT_FUNCTION_NONE
 
@@ -309,7 +309,7 @@
 #define DI4_FUNCTION                INPUT_FUNCTION_NONE
 
 // Zmin
-#define DI5_MODE                    INPUT_ACTIVE_LOW    // Z proble
+#define DI5_MODE                    INPUT_MODE_DISABLED
 #define DI5_ACTION                  INPUT_ACTION_NONE
 #define DI5_FUNCTION                INPUT_FUNCTION_NONE
 
