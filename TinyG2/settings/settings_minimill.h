@@ -337,13 +337,13 @@
 /*** Handle optional modules that may not be in every machine ***/
 
 #define P1_PWM_FREQUENCY            100                   // in Hz
-#define P1_CW_SPEED_LO              0.0                   // in RPM (arbitrary units)
+#define P1_CW_SPEED_LO              100                   // in RPM (arbitrary units)
 #define P1_CW_SPEED_HI              2500
-#define P1_CW_PHASE_LO              0.0                   // phase [0..1]
+#define P1_CW_PHASE_LO              0.04                   // phase [0..1]
 #define P1_CW_PHASE_HI              1.0
-#define P1_CCW_SPEED_LO             0.0
+#define P1_CCW_SPEED_LO             100
 #define P1_CCW_SPEED_HI             2500
-#define P1_CCW_PHASE_LO             0.0
+#define P1_CCW_PHASE_LO             0.04
 #define P1_CCW_PHASE_HI             1.0
 #define P1_PWM_PHASE_OFF            0.1
 
