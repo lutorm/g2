@@ -169,7 +169,7 @@
 #define X_JUNCTION_DEVIATION        JUNCTION_DEVIATION_XY // xjd
 #define X_HOMING_INPUT              1                   // xhi  number of the input to ise for homing, or 0 for off
 #define X_HOMING_DIR                0                   // xhd  0 to search to minimum, 1 to search to maximum
-#define X_SEARCH_VELOCITY           500					// xsv  move in negative direction
+#define X_SEARCH_VELOCITY           1000					// xsv  move in negative direction
 #define X_LATCH_VELOCITY            100					// xlv  mm/min
 #define X_LATCH_BACKOFF             5					// xlb  mm
 #define X_ZERO_BACKOFF              1					// xzb  mm
@@ -184,7 +184,7 @@
 #define Y_JUNCTION_DEVIATION        JUNCTION_DEVIATION_XY
 #define Y_HOMING_INPUT              3
 #define Y_HOMING_DIR                1
-#define Y_SEARCH_VELOCITY           500
+#define Y_SEARCH_VELOCITY           1000
 #define Y_LATCH_VELOCITY            100
 #define Y_LATCH_BACKOFF             5
 #define Y_ZERO_BACKOFF              1
@@ -199,7 +199,7 @@
 #define Z_JUNCTION_DEVIATION        JUNCTION_DEVIATION_Z
 #define Z_HOMING_INPUT              5
 #define Z_HOMING_DIR                1
-#define Z_SEARCH_VELOCITY           400
+#define Z_SEARCH_VELOCITY           1000
 #define Z_LATCH_VELOCITY            100
 #define Z_LATCH_BACKOFF             5
 #define Z_ZERO_BACKOFF              1
