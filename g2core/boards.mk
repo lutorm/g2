@@ -160,6 +160,15 @@ ifeq ("$(CONFIG)","EggBot")
     SETTINGS_FILE="settings_eggbot.h"
 endif
 
+# Due configs
+
+ifeq ("$(CONFIG)","patriks_minimill")
+    ifeq ("$(BOARD)","NONE")
+        BOARD=clearpath
+    endif
+    SETTINGS_FILE="settings_patriks_minimill.h"
+endif
+
 
 include $(wildcard ./board/$(STAR).mk)
 

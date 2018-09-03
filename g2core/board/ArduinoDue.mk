@@ -43,6 +43,18 @@ ifeq ("$(BOARD)","shopbotShield")
     DEVICE_DEFINES += SETTINGS_FILE=${SETTINGS_FILE}
 endif
 
+ifeq ("$(BOARD)","clearpath")
+    # This is a due with a shield for Clearpath servos. We'll use
+    # the Due platform, but set defines for the code to get the pinout
+    # right.
+
+    # Note: we call it "g2core-due" instead of "due" since the Motate built-in provides
+    # a "due" BASE_BOARD.
+    BASE_BOARD = g2core-due
+    DEVICE_DEFINES += MOTATE_BOARD="clearpath"
+    DEVICE_DEFINES += SETTINGS_FILE=${SETTINGS_FILE}
+endif
+
 
 
 ##########
