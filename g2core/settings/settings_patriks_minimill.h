@@ -107,11 +107,11 @@
 #endif
 
 #ifndef SPINDLE_SPEED_MIN
-#define SPINDLE_SPEED_MIN           0.0     // {spsn:
+#define SPINDLE_SPEED_MIN           200.0     // {spsn:
 #endif
 
 #ifndef SPINDLE_SPEED_MAX
-#define SPINDLE_SPEED_MAX     1000000.0     // {spsm:
+#define SPINDLE_SPEED_MAX     5000.0     // {spsm:
 #endif
 
 #ifndef COOLANT_MIST_POLARITY
@@ -1047,10 +1047,10 @@
 #define P1_PWM_FREQUENCY            100                   // in Hz
 #endif
 #ifndef P1_CW_SPEED_LO
-#define P1_CW_SPEED_LO              100                  // in RPM (arbitrary units)
+#define P1_CW_SPEED_LO              200                  // in RPM (arbitrary units)
 #endif
 #ifndef P1_CW_SPEED_HI
-#define P1_CW_SPEED_HI              2500
+#define P1_CW_SPEED_HI              5000
 #endif
 #ifndef P1_CW_PHASE_LO
 #define P1_CW_PHASE_LO              0.04                    // phase [0..1]
@@ -1059,10 +1059,10 @@
 #define P1_CW_PHASE_HI              1.0
 #endif
 #ifndef P1_CCW_SPEED_LO
-#define P1_CCW_SPEED_LO             100
+#define P1_CCW_SPEED_LO             200
 #endif
 #ifndef P1_CCW_SPEED_HI
-#define P1_CCW_SPEED_HI            2500    // 0.0
+#define P1_CCW_SPEED_HI            5000    // 0.0
 #endif
 #ifndef P1_CCW_PHASE_LO
 #define P1_CCW_PHASE_LO             0.04
